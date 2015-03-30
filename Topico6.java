@@ -1,4 +1,4 @@
-/** Crie uma aplicação onde ao executar, crie um estrutura de diretorios como abaixo.
+﻿/** Crie uma aplicação onde ao executar, crie um estrutura de diretorios como abaixo.
  *  Crie também um método que exclua a Pasta 'AulaPOOII'.
 AulaPOOII
       - - - Programacao
@@ -9,7 +9,7 @@ AulaPOOII
                                - - - Montenegro
  */
 package br.unisc.main;
-//Importações
+
 import java.io.File;
 import java.util.Scanner;
 
@@ -34,20 +34,48 @@ public class Topico6 {
         boolean result=false;
         Scanner entrada = new Scanner(System.in);
         System.out.println("Informe o drive a ser utilizado: ");
-        DRIVE = entrada.nextLine().toUpperCase();
-        System.out.println(DRIVE);
+        DRIVE = entrada.nextLine().toUpperCase()+":";
         Topico6 pasta = new Topico6();
         try{
-            result = pasta.existePasta(":\\", "POOII");
+            result = pasta.existePasta("\\", "POOII");
             if(result == false){
-                System.out.println("Criando pasta POOII...");
-                pasta.criarPasta(":\\POOII");
-                System.out.println("Pasta criada...");
+                System.out.println("A Pasta não existe. Criando pasta POOII...");
+                pasta.criarPasta("\\POOII");
+                result = pasta.existePasta("\\", "POOII");
+                    if (result == true){
+                        System.out.println("Pasta criada...");
+                    } else{System.out.println("A Pasta não foi criada.");                        }
             } else{
                 System.out.println("A pasta POOII já existe.");
                 }
+            //================================================================
+            result = pasta.existePasta("\\POOII\\", "Programacao");
+            if(result == false){
+                System.out.println("A Pasta não existe. Criando pasta Programacao...");
+                pasta.criarPasta("\\POOII\\Programacao");
+                result = pasta.existePasta("\\", "POOII\\Programacao");
+                    if (result == true){
+                        System.out.println("Pasta criada...");
+                    } else{System.out.println("A Pasta não foi criada.");                        }
+            } else{
+                System.out.println("A pasta Programacao já existe.");
+                }
+            //================================================================
+                        result = pasta.existePasta("\\POOII\\", "OrientacaoObjeto");
+            if(result == false){
+                System.out.println("A Pasta não existe. Criando pasta OrientacaoObjeto...");
+                pasta.criarPasta("\\POOII\\OrientacaoObjeto");
+                result = pasta.existePasta("\\", "POOII\\OrientacaoObjeto");
+                    if (result == true){
+                        System.out.println("Pasta criada...");
+                    } else{System.out.println("A Pasta não foi criada.");                        }
+            } else{
+                System.out.println("A pasta OrientacaoObjeto já existe.");
+                }
+            
         }catch(Exception e){
             System.out.println("Ocorreu um erro. A pasta não foi criada.");
         }
+        
     }
 }

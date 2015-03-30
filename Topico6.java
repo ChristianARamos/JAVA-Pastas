@@ -9,7 +9,7 @@ AulaPOOII
                                - - - Montenegro
  */
 package br.unisc.main;
-
+//Importações
 import java.io.File;
 import java.util.Scanner;
 
@@ -49,6 +49,5 @@ public class Topico6 {
         }catch(Exception e){
             System.out.println("Ocorreu um erro. A pasta não foi criada.");
         }
-        
     }
 }

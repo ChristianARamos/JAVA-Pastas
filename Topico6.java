@@ -20,15 +20,15 @@ import java.util.Scanner;
 public class Topico6 {
     static String DRIVE="";
     
-    //Criar Pasta   
+    //CRIAR PASTA  
     public void criarPasta(String nomePasta){
         new File(DRIVE + nomePasta).mkdir();
     }
-    //Existe Pasta
+    //EXITE PASTA
     public boolean existePasta(String caminho, String nomePasta){
         return new File(DRIVE + caminho + nomePasta).exists();
     }
-    //Deletar Pasta
+    //DELETA PASTA
     public boolean deletarPasta(String caminho, String nomePasta){
         return new File(DRIVE + caminho + nomePasta).delete();
     }
@@ -44,7 +44,7 @@ public class Topico6 {
         }
     }
     
-    //Principal
+    // <<------- MAIN ------->>
     public static void main(String[] args) {
         boolean result;
         Scanner entrada = new Scanner(System.in);
@@ -139,6 +139,7 @@ public class Topico6 {
         }catch(Exception e){
             System.out.println("Ocorreu um erro. A pasta não foi criada.");
         }
+        
         try{
             pasta.listarPasta("POOII");
         }

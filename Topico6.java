@@ -1,4 +1,4 @@
-﻿/** Crie uma aplicação onde ao executar, crie um estrutura de diretorios como abaixo.
+/** Crie uma aplicação onde ao executar, crie um estrutura de diretorios como abaixo.
  *  Crie também um método que exclua a Pasta 'AulaPOOII'.
 AulaPOOII
       - - - Programacao
@@ -28,14 +28,30 @@ public class Topico6 {
     public boolean existePasta(String caminho, String nomePasta){
         return new File(DRIVE + caminho + nomePasta).exists();
     }
+    //Deletar Pasta
+    public boolean deletarPasta(String caminho, String nomePasta){
+        return new File(DRIVE + caminho + nomePasta).delete();
+    }
+    public void listarPasta(String nomePasta){
+        
+        File dir = new File(DRIVE+"\\"+nomePasta);
+        File[] conteudo = dir.listFiles();
+        for(File pasta : conteudo){
+            if(pasta.isDirectory()){
+                System.out.println("DIR:"+nomePasta+"\\"+pasta.getName());
+                listarPasta(nomePasta+"\\"+pasta.getName());
+            }
+        }
+    }
     
     //Principal
     public static void main(String[] args) {
-        boolean result=false;
+        boolean result;
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Informe o drive a ser utilizado: ");
-        DRIVE = entrada.nextLine().toUpperCase()+":";
+        System.out.println("Por favor, informe o drive a ser utilizado: ");
+        DRIVE = entrada.nextLine().toUpperCase() + ":";
         Topico6 pasta = new Topico6();
+        
         try{
             result = pasta.existePasta("\\", "POOII");
             if(result == false){
@@ -120,10 +136,14 @@ public class Topico6 {
             } else{
                 System.out.println("A pasta Montenegro já existe.");
                 }
-            
-            
         }catch(Exception e){
             System.out.println("Ocorreu um erro. A pasta não foi criada.");
+        }
+        try{
+            pasta.listarPasta("POOII");
+        }
+        catch(Exception e){
+            System.out.println("Ocorreu um erro. A lista não pode ser criada.");
         }
     }
 }

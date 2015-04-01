@@ -32,8 +32,19 @@ public class Topico6 {
     public boolean deletarPasta(String caminho, String nomePasta){
         return new File(DRIVE + caminho + nomePasta).delete();
     }
+    //DELETA ARVORE
+    public void deletarArvore(File arvore){
+        if(!arvore.isDirectory()){
+            arvore.delete();
+        }else{
+           File files[] = arvore.listFiles();    
+           for (File sub: files) {    
+                deletarArvore(sub);
+           }
+           arvore.delete();
+        }
+    }
     public void listarPasta(String nomePasta){
-        
         File dir = new File(DRIVE+"\\"+nomePasta);
         File[] conteudo = dir.listFiles();
         for(File pasta : conteudo){
@@ -47,7 +58,9 @@ public class Topico6 {
     // <<------- MAIN ------->>
     public static void main(String[] args) {
         boolean result;
+        String quest;
         Scanner entrada = new Scanner(System.in);
+        Scanner qdelete = new Scanner(System.in);
         System.out.println("Por favor, informe o drive a ser utilizado: ");
         DRIVE = entrada.nextLine().toUpperCase() + ":";
         Topico6 pasta = new Topico6();
@@ -146,5 +159,17 @@ public class Topico6 {
         catch(Exception e){
             System.out.println("Ocorreu um erro. A lista não pode ser criada.");
         }
+        
+        System.out.println("Deseja executar o deletarArvore? S/N");
+        quest = qdelete.nextLine().toUpperCase();
+        if(quest.equalsIgnoreCase("S")){
+            try{
+                File pastas = new File(DRIVE+"\\POOII");
+                pasta.deletarArvore(pastas);
+                System.out.println("Pastas deletadas.");
+            }catch(Exception e){
+                System.out.println("Ocorreu um erro. Não foi possível deletar a pasta.");
+            }
+        }        
     }
 }

@@ -9,7 +9,6 @@ AulaPOOII
                                - - - Montenegro
  */
 package br.unisc.main;
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -54,7 +53,6 @@ public class Topico6 {
             }
         }
     }
-    
     // <<------- MAIN ------->>
     public static void main(String[] args) {
         boolean result;
@@ -152,14 +150,14 @@ public class Topico6 {
         }catch(Exception e){
             System.out.println("Ocorreu um erro. A pasta não foi criada.");
         }
-        
+        //================================================================
         try{
             pasta.listarPasta("POOII");
         }
         catch(Exception e){
             System.out.println("Ocorreu um erro. A lista não pode ser criada.");
         }
-        
+        //================================================================
         System.out.println("Deseja executar o deletarArvore? S/N");
         quest = qdelete.nextLine().toUpperCase();
         if(quest.equalsIgnoreCase("S")){
@@ -168,7 +166,7 @@ public class Topico6 {
                 pasta.deletarArvore(pastas);
                 System.out.println("Pastas deletadas.");
             }catch(Exception e){
-                System.out.println("Ocorreu um erro. Não foi possível deletar a pasta.");
+                System.out.println("Ocorreu um erro. Não foi possível deletar a(s) pasta(s).");
             }
         }        
     }
